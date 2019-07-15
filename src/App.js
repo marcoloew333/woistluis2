@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   getBets = _ => {
-    fetch("http://192.168.178.198:4000/products")
+    fetch("http://www.woistluis.moodlions.de/bets")
         .then(response => response.json())
         .then(response => this.setState({bets: response.data}))
         .catch(err => console.error(err))
@@ -25,13 +25,17 @@ class App extends Component {
   addBet = _ => {
     const { bet } = this.state;
 
-    fetch(`http://192.168.178.198:4000/products/add?name=${bet.person_name}&bet=${bet.time_bet}`)
+    fetch(`http://www.woistluis.moodlions.de/bets/add?name=${bet.person_name}&bet=${bet.time_bet}`)
         .then(response => response.json())
         .then(this.getProducts)
         .catch(err => console.error(err))
   };
 
-  renderBets = ({ bet_id, name}) => <div key={bet_id}>{name}</div>;
+  renderBets = ({ bet_id, name, bet}) =>
+      <div key={bet_id}>
+        <p>{name}</p>
+        <p>{bet}</p>
+      </div>;
 
     render() {
     const { bets, bet } = this.state;
