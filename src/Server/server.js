@@ -54,6 +54,6 @@ app.get("/products/add", (req, res) => {
     })
 });
 
-app.listen(4000, () => {
-    console.log("I'm listening to port 4000")
-});
+// app.listen(4000, () => {
+//     console.log("I'm listening to port 4000")
+// });
